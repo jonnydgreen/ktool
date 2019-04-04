@@ -11,6 +11,7 @@
     "lint": "tslint -p .",
     "compile": "tsc -p .",
     "build": "yarn format && yarn lint && yarn compile",
+    "build-watch": "tsc -p . -w",
     "test": "jest",
     "watch": "jest --watch",
     "snapupdate": "jest --updateSnapshot",
