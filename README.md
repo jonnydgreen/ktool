@@ -1,7 +1,5 @@
 # Toolketes CLI
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/projectjudge/toolketes.svg)](https://greenkeeper.io/)
-
 </h3>
 <p align="center">
   A CLI for making kubernetes a piece of caketes.
@@ -12,6 +10,9 @@
   </a>
   <a href="https://travis-ci.org/projectjudge/toolketes">
     <img src="https://travis-ci.org/projectjudge/toolketes.svg?branch=master" alt="Current TravisCI build status." />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/projectjudge/toolketes.svg" alt="Current Greenkeeper status" />
   </a>
   <a >
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
