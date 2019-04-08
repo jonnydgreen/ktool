@@ -1,4 +1,4 @@
-const { build } = require('gluegun')
+import { build } from 'gluegun'
 
 /**
  * Create the cli and kick it off

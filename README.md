@@ -39,7 +39,7 @@ Open a new pane/terminal and run:
 $ toolketes -h
 toolketes version 0.0.1
 
-  toolketes       -
+  toolketes       Toolketes CLI welcome screen
   all-pods (a)    Get all pods
   context (c)     Changes the current context of your kubernetes config
   namespace (n)   Changes the current namespace of your kubernetes config
