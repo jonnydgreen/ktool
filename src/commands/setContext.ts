@@ -1,12 +1,11 @@
-import { GluegunToolbox } from 'gluegun'
-
 module.exports = {
   name: 'context',
   alias: ['c'],
   description: 'Changes the current context of your kubernetes config',
-  run: async (toolbox: GluegunToolbox) => {
+  run: async (toolbox) => {
     // retrieve the tools from the toolbox that we will need
-    const { parameters, print, prompt, system } = toolbox
+    const GluegunToolbox = require('gluegun').GluegunToolbox
+    const { parameters, print, prompt, system } = toolbox as typeof GluegunToolbox
 
     // check if there's a name provided on the command line first
     // if not, let's prompt the user for one and then assign that to `newContext`

@@ -1,12 +1,10 @@
-import { GluegunToolbox } from 'gluegun'
-
 module.exports = {
   name: 'namespace',
   alias: ['n'],
   description: 'Changes the current namespace of your kubernetes config',
-  run: async (toolbox: GluegunToolbox) => {
-    // retrieve the tools from the toolbox that we will need
-    const { parameters, print, prompt, system } = toolbox
+  run: async (toolbox) => {
+    const GluegunToolbox = require('gluegun').GluegunToolbox
+    const { parameters, print, prompt, system } = toolbox as typeof GluegunToolbox
 
     // check if there's a name provided on the command line first
     // if not, let's prompt the user for one and then assign that to `newNamespace`

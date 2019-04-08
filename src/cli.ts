@@ -9,8 +9,8 @@ async function run(argv) {
     .brand('toolketes')
     .src(__dirname)
     .plugins('./node_modules', { matching: 'toolketes-*', hidden: true })
-    .help() // provides default for help, h, --help, -h
-    .version() // provides default for version, v, --version, -v
+    .help()
+    .version()
     .create()
 
   // and run it
