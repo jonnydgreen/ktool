@@ -43,6 +43,7 @@ toolketes version 0.0.1
   all-pods (a)    Get all pods
   context (c)     Changes the current context of your kubernetes config
   namespace (n)   Changes the current namespace of your kubernetes config
+  logs (l)        Shows the logs of a selected pod
   help (h)        -
   version (v)     Output the version number
 ```
