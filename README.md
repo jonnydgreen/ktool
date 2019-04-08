@@ -36,9 +36,14 @@ $ npm link
 Open a new pane/terminal and run:
 
 ```shell
-$ toolketes
 $ toolketes -h
-$ toolketes context
+toolketes version 0.0.1
+
+  toolketes       -
+  context (c)     Changes the current context of your kubernetes config
+  namespace (n)   Changes the current namespace of your kubernetes config
+  help (h)        -
+  version (v)     Output the version number
 ```
 
 ## Publishing to NPM

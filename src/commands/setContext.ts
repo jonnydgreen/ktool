@@ -1,5 +1,4 @@
 import { GluegunToolbox } from 'gluegun'
-import { exec } from '../helpers'
 
 module.exports = {
   name: 'context',
@@ -7,16 +6,18 @@ module.exports = {
   description: 'Changes the current context of your kubernetes config',
   run: async (toolbox: GluegunToolbox) => {
     // retrieve the tools from the toolbox that we will need
-    const { parameters, print, prompt } = toolbox
+    const { parameters, print, prompt, system } = toolbox
 
     // check if there's a name provided on the command line first
     // if not, let's prompt the user for one and then assign that to `newContext`
-    let newContext = parameters.first
+    let newContext
+    if (parameters) {
+      newContext = parameters.first
+    }
 
-    const availableContexts = (await exec(
+    const availableContexts = (await system.run(
       'kubectl config get-contexts -o name'
-    ))
-      .trim()
+    , { trim: true }))
       .split('\n')
 
     if (availableContexts.length === 0) {
@@ -29,7 +30,7 @@ module.exports = {
 
     if (!newContext) {
       const result: { context?: string } = await prompt.ask({
-        type: 'list',
+        type: 'select',
         name: 'context',
         message: 'Which contexteroonie?',
         choices: availableContexts,
@@ -41,7 +42,7 @@ module.exports = {
     }
 
     try {
-      await exec(`kubectl config use-context ${newContext}`)
+      await system.run(`kubectl config use-context ${newContext}`)
     } catch (err) {
       print.error(`Invalid context specified probz: ${err.message}`)
     }
