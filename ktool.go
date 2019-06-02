@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/projectjudge/ktool/pkg/cmd"
-	"github.com/projectjudge/ktool/pkg/pods"
 )
 
 func main() {
@@ -13,9 +12,9 @@ func main() {
 
 	exitChan := cmd.RegisterCleanup()
 
-	// Run our command in a separate goroutine
+	// Run our commands in a separate goroutine
 	go func() {
-		pods.WatchPods()
+		cmd.Execute()
 	}()
 
 	cmd.Cleanup(exitChan)

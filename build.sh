@@ -1,1 +1,1 @@
-go build -o bin/ktool ./cmd/ktool
+go build -o bin/ktool . 

@@ -11,9 +11,6 @@
   <a href="https://travis-ci.org/projectjudge/ktool">
     <img src="https://travis-ci.org/projectjudge/ktool.svg?branch=master" alt="Current TravisCI build status." />
   </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/projectjudge/ktool.svg" alt="Current Greenkeeper status" />
-  </a>
   <a >
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
@@ -22,14 +19,11 @@
   </a>
 </p>
 
-## Building
-
-At the moment, ktool is not published to npm yet so you'll need to clone the repo to get started at this alpha stage.
+## Install
 
 ```bash
 git clone https://github.com/projectjudge/ktool.git
-cd ktool
-go build -o bin/ktool ./cmd/ktool
+cp ktool/bin/ktool <somewhere_in_your_path>/ktool
 ```
 
 Or
@@ -40,34 +34,34 @@ go get github.com/projectjudge/ktool
 
 ### Devving
 
+Single build:
+
 ```bash
-gomon **/*.go -- go build -o bin/ktool ./cmd/ktools
+./build.sh
+```
+
+Watcher build:
+
+```bash
+gomon **/*.go -- go build -o bin/ktool .
 ```
 
 Open a new pane/terminal and run:
 
 ```shell
 $ ktool -h
-ktool version 0.0.1
+Ktool is a simplified kubectl
 
-  ktool       ktool CLI welcome screen
-  all-pods (a)    Get all pods
-  context (c)     Changes the current context of your kubernetes config
-  namespace (n)   Changes the current namespace of your kubernetes config
-  logs (l)        Shows the logs of a selected pod
-  help (h)        -
-  version (v)     Output the version number
-```
+Usage:
+  ktool [flags]
+  ktool [command]
 
-## Publishing to NPM
+Available Commands:
+  a           Watch all the pods in a k8s cluster
+  help        Help about any command
+  l           Watch a pods logs
 
-To package your CLI up for NPM, do this:
+Flags:
+  -h, --help   help for ktool
 
-```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
-```
+Use "ktool [command] --help" for more information about a command.
