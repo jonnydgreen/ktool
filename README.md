@@ -8,9 +8,9 @@
   <a href="https://github.com/projectjudge/ktool/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="ktool is released under the MIT license." />
   </a>
-  <a href="https://travis-ci.org/projectjudge/ktool">
+  <!-- <a href="https://travis-ci.org/projectjudge/ktool">
     <img src="https://travis-ci.org/projectjudge/ktool.svg?branch=master" alt="Current TravisCI build status." />
-  </a>
+  </a> -->
   <a >
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
@@ -32,19 +32,7 @@ Or
 go get github.com/projectjudge/ktool
 ```
 
-### Devving
-
-Single build:
-
-```bash
-./build.sh
-```
-
-Watcher build:
-
-```bash
-gomon **/*.go -- go build -o bin/ktool .
-```
+## Usage
 
 Open a new pane/terminal and run:
 
@@ -65,3 +53,18 @@ Flags:
   -h, --help   help for ktool
 
 Use "ktool [command] --help" for more information about a command.
+```
+
+## Devving
+
+### Single build:
+
+```bash
+./build.sh
+```
+
+### Watcher build:
+
+```bash
+gomon **/*.go -- go build -o bin/ktool .
+```
