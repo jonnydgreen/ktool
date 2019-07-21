@@ -10,12 +10,5 @@ import (
 func main() {
 	rand.Seed(time.Now().UnixNano())
 
-	exitChan := cmd.RegisterCleanup()
-
-	// Run our commands in a separate goroutine
-	go func() {
-		cmd.Execute()
-	}()
-
-	cmd.Cleanup(exitChan)
+	cmd.Execute()
 }

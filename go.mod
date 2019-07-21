@@ -3,6 +3,8 @@ module github.com/projectjudge/ktool
 go 1.12
 
 require (
+	github.com/cjbassi/gotop v0.0.0-20190715230637-2cd92e147e6b // indirect
+	github.com/gizak/termui/v3 v3.1.0
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/googleapis/gnostic v0.2.0 // indirect
 	github.com/imdario/mergo v0.3.7 // indirect

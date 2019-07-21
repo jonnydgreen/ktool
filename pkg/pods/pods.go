@@ -10,7 +10,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -22,8 +21,54 @@ import (
 	"github.com/projectjudge/ktool/pkg/utils"
 )
 
+// GetPods gets all pods
+func GetPods(kubeconfig string) string {
+	var out bytes.Buffer
+	command := "kubectl"
+	args := []string{
+		"--kubeconfig",
+		kubeconfig,
+		"get",
+		"pods",
+		"--all-namespaces",
+	}
+	out = bytes.Buffer{}
+	cmd := exec.Command(command, args...)
+	cmd.Stdout = &out
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return out.String()
+}
+
+// GetPodLogs gets all pods
+func GetPodLogs(kubeconfig string, name string, namespace string) string {
+	command := "kubectl"
+	args := []string{
+		"--kubeconfig",
+		kubeconfig,
+		"-n",
+		namespace,
+		"logs",
+		name,
+	}
+	stdout := bytes.Buffer{}
+	stderr := bytes.Buffer{}
+	cmd := exec.Command(command, args...)
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	if err != nil {
+		return fmt.Sprintf("Command failed with error: %s\n\tStdout: %s\n\tStderr: %s", err, stdout.String(), stderr.String())
+	}
+
+	return stdout.String()
+}
+
 // WatchPods watch pods
-func WatchPods() {
+func WatchPods() string {
 	var kubeconfig *string
 	if home := homedir.HomeDir(); home != "" {
 		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
@@ -40,6 +85,7 @@ func WatchPods() {
 		"pods",
 		"--all-namespaces",
 	}
+	utils.CallClear()
 	for true {
 		out = bytes.Buffer{}
 		cmd := exec.Command(command, args...)
@@ -48,11 +94,13 @@ func WatchPods() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		utils.CallClear()
-		fmt.Printf("Every 1.0s: %s %s\n\n", command, strings.Join(args, " "))
-		fmt.Printf("%s\n", out.String())
-		time.Sleep(time.Second)
+		// fmt.Printf("\033[0;0H")
+		// fmt.Printf("Every 1.0s: %s %s\n\n", command, strings.Join(args, " "))
+		// fmt.Printf("%s\n", out.String())
+		// time.Sleep(time.Second)
 	}
+
+	return out.String()
 }
 
 // WatchPodLogs allows a user to select a pod an get its logs

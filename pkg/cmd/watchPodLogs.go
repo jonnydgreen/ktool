@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/projectjudge/ktool/pkg/pods"
+	"github.com/projectjudge/ktool/pkg/views"
 	"github.com/spf13/cobra"
 )
 
@@ -11,6 +11,6 @@ var WatchPodLogsCommand = &cobra.Command{
 	Short: "Watch a pods logs",
 	Long:  "Watch a pods logs",
 	Run: func(cmd *cobra.Command, args []string) {
-		pods.WatchPodLogs()
+		views.WatchPodLogs()
 	},
 }

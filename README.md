@@ -2,7 +2,7 @@
 
 </h3>
 <p align="center">
-  A CLI for making kubernetes a piece of caketes.
+  A CLI that calls common kubernetes commands to make managing it easier.
 </p>
 <p align="center">
   <a href="https://github.com/projectjudge/ktool/blob/master/LICENSE">
@@ -57,13 +57,13 @@ Use "ktool [command] --help" for more information about a command.
 
 ## Devving
 
-### Single build:
+### Single build
 
 ```bash
 ./build.sh
 ```
 
-### Watcher build:
+### Watcher build
 
 ```bash
 gomon **/*.go -- go build -o bin/ktool .
